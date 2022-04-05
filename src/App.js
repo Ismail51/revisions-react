@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { useState } from "react"
+import { useEffect } from "react/cjs/react.production.min"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+  
+  const[name, setName] = useState("")
+  const[capital, setCapital] = useState("")
+  const[flag, setFlag] = useState("")
+  const[population, setPopulation] = useState("")
+  const[region, setRegion] = useState("")
+  
+  useEffect(() => {
+
+    
+  })
+
+  return ( 
+    <h1>hello
+      <p>{name}</p>
+      <p>{capital}</p>
+      <p>{flag}</p>
+      <p>{population}</p>
+      <p>{region}</p>
+    </h1>
+    
+  )
+  
 }
 
-export default App;
+
+export default App
