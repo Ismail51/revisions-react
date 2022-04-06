@@ -1,31 +1,42 @@
 import React from "react"
-import { useState } from "react"
-import { useEffect } from "react/cjs/react.production.min"
+import { useState, useEffect } from "react"
+import axios from "axios"
+import Button from "./Components/Button"
+import Card from "./Components/Card"
 
-function App(){
-  
-  const[name, setName] = useState("")
-  const[capital, setCapital] = useState("")
-  const[flag, setFlag] = useState("")
-  const[population, setPopulation] = useState("")
-  const[region, setRegion] = useState("")
-  
+function App() {
+
+  const [country, setCountry] = useState(false)
+
+
   useEffect(() => {
+    axios.get("https://restcountries.com/v3.1/name/france").then(resultat => {
+      setCountry(resultat.data[0])
+      console.log(resultat.data[0]);
+    })
+  }, [])
 
-    
-  })
+  const getCountry = (country) => {
+    axios(`https://restcountries.com/v3.1/name/${country}`).then(country => {
+      setCountry(country.data[0])
+    })
+  }
 
-  return ( 
-    <h1>hello
-      <p>{name}</p>
-      <p>{capital}</p>
-      <p>{flag}</p>
-      <p>{population}</p>
-      <p>{region}</p>
-    </h1>
-    
+
+  return (
+
+    <div>
+      <Button onClick={getCountry}>France</Button>
+      <Button onClick={getCountry}>Brazil</Button>
+      <Button onClick={getCountry}>Croatia</Button>
+
+      {country ?
+        <Card country={country} />
+        : null
+      }
+    </div>
   )
-  
+
 }
 
 
